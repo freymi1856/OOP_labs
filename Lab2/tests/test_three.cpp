@@ -22,7 +22,7 @@ TEST(ThreeTests, Subtraction) {
     Three num1("210");
     Three num2("12");
     Three result = num1 - num2;
-    EXPECT_EQ(result.toString(), "201");
+    EXPECT_EQ(result.toString(), "121");
 }
 
 TEST(ThreeTests, ComparisonEqual) {

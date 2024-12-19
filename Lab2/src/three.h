@@ -1,32 +1,38 @@
 #ifndef THREE_H
 #define THREE_H
 
-#include <vector>
 #include <string>
-#include <stdexcept>
+#include <vector>
 
 class Three {
-private:
-    std::vector<unsigned char> digits; // хранение цифр троичного числа
-
-    // Проверяет корректность строки (должны быть только цифры 0, 1, 2)
-    void validateString(const std::string& str);
-
 public:
     // Конструкторы
-    Three();
-    Three(const std::string& number);
+    Three(); // Конструктор по умолчанию
+    explicit Three(const std::string& num_str); // Из строки
 
-    // Арифметические операции
+    // Методы
+    std::string toString() const;
+
+    // Операторы сравнения
+    bool operator==(const Three& other) const;
+    bool operator!=(const Three& other) const;
+    bool operator<(const Three& other) const;
+    bool operator<=(const Three& other) const;
+    bool operator>(const Three& other) const;
+    bool operator>=(const Three& other) const;
+
+    // Оператор присваивания
+    Three& operator=(const Three& other);
+
+    // Арифметические операторы
     Three operator+(const Three& other) const;
     Three operator-(const Three& other) const;
 
-    // Операции сравнения
-    bool operator==(const Three& other) const;
-    bool operator!=(const Three& other) const;
+private:
+    // Вспомогательный конструктор
+    explicit Three(const std::vector<unsigned char>& digits);
 
-    // Преобразование в строку
-    std::string toString() const;
+    std::vector<unsigned char> digits; // Вектор троичных цифр
 };
 
 #endif
